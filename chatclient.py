@@ -1,5 +1,5 @@
 '''
-Program:		client.py
+Program:		chatclient.py
 Course:			CS 372
 Author:			Abby Meunier
 Email:			meuniera@oregonstate.edu
