@@ -1,5 +1,6 @@
 '''
 Program:	client.py
+Course:		CS 372
 Author:		Abby Meunier
 Email:		meuniera@oregonstate.edu
 Date:		11/1/2015
@@ -16,6 +17,7 @@ def get_handle():
 	handle = raw_input( "Enter a username up to 10 characters: ")
 	while len(handle) < 1 or len(handle) > 10:
 		handle = raw_input("Username must be between 1 and 10 characters. Try again: ");
+	
 	return handle
 
 def init_contact():
@@ -25,8 +27,8 @@ def init_contact():
 	clientSocket = socket(AF_INET, SOCK_STREAM)
 
 	#connect to server
-	print "Connecting to", serverName, "port #", serverPort
 	clientSocket.connect((serverName, serverPort))
+	print "Client now connected to", serverName, "port #", serverPort
 	
 	return clientSocket
 	

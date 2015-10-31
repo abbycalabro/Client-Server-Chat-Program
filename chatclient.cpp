@@ -75,7 +75,6 @@ int main(int argc, char* argv[]) {
 
 		//close connection 
 		if(msg == "/quit") {
-			c_msg = msg.c_str();
 			if(close(sockfd) !=  0) 
 				cout << "Error closing connection" << endl;	
 			cout << "Connection closed. Terminating program." << endl;		
