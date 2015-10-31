@@ -1,17 +1,20 @@
-/*************************************************************************************
-Program:	server.cpp
-Course:		CS 372
-Author:		Abby Meunier
-Email:		meuniera@oregonstate.edu
-Date:		11/1/2015
+/****************************************************************************************
+Program:		server.cpp
+Course:			CS 372
+Author:			Abby Meunier
+Email:			meuniera@oregonstate.edu
+Date:			11/1/2015
 Description:	Program takes port # as a command line argument, creates
-		welcoming socket and begins listening for connection requests 
-		on the specified port. When a connection to client is established,
-		server sends messages and prints received messages to the 
-		terminal. If client or server enters the message "/quit", server
-		closes connection and listens for new connections until terminated
-		by a supervisor.
-*************************************************************************************/
+				welcoming socket and begins listening for connection requests 
+				on the specified port. When a connection to client is established,
+				server sends messages and prints received messages to the 
+				terminal. If client or server enters the message "/quit", server
+				closes connection and listens for new connections until terminated
+				by a supervisor.
+Resources:
+				http://beej.us/guide/bgnet/output/html/singlepage/bgnet.html
+				http://www.tutorialspoint.com/unix_sockets/socket_server_example.html
+******************************************************************************************/
 
 #include <iostream>
 #include <sys/socket.h>
@@ -57,7 +60,8 @@ bool rec_msg(int new_sockfd) {
 
 	//receive message
 	bytes_read = recv(new_sockfd, buffer, sizeof(buffer), 0);
-	//print message or close connection and go back to listening
+	
+	//print message or close connection
 	if(bytes_read > 0) {
 		buffer[bytes_read] = '\0';
 		cout << buffer << endl;
@@ -68,6 +72,7 @@ bool rec_msg(int new_sockfd) {
 	else if(bytes_read == 0) {
 		//close connection
 		cout << "Client has quit. Now closing connection." << endl;
+		
 		if(close(new_sockfd) !=  0)
 			cout << "Error closing connection" << endl;
 		else
@@ -83,6 +88,11 @@ bool send_msg(int new_sockfd) {
 	//get message
 	cout << "A > ";
 	getline(cin, msg, '\n');
+	while(msg.length() < 1) {
+		cout << "Messages must be at least 1 character long." << endl;
+		cout << "A > ";
+		getline(cin, msg, '\n');
+	}
 	
 	//close connection or send message
 	if(msg == "/quit") {

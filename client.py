@@ -1,13 +1,13 @@
 '''
-Program:	client.py
-Course:		CS 372
-Author:		Abby Meunier
-Email:		meuniera@oregonstate.edu
-Date:		11/1/2015
+Program:		client.py
+Course:			CS 372
+Author:			Abby Meunier
+Email:			meuniera@oregonstate.edu
+Date:			11/1/2015
 Description:	Program takes two command line arguments: server hostname and port #.
-		Prompts user for a username handle and establishes a TCP connection with server.
-		Once connected, client and server exchange messages until either one enters 
-		the message "/quit", upon which the connection is closed and the program terminates.
+				Prompts user for a username handle and establishes a TCP connection with server.
+				Once connected, client and server exchange messages until either one enters 
+				the message "/quit", upon which the connection is closed and the program terminates.
 '''
 
 from socket import *
@@ -40,7 +40,7 @@ def send_msg(msg, clientSocket, handle):
 		print "Connection closed. Terminating program."
 		exit()
 	else:
-		clientSocket.send(handle + ' > ' + msg)
+		clientSocket.send(handle + " > " + msg)
 
 def rec_msg(clientSocket):
 	#receive and print message, or end program
@@ -51,7 +51,7 @@ def rec_msg(clientSocket):
 		print "Connection closed. Now terminating."
 		exit()
 	else:
-		print 'A >', response
+		print "A >", response
 
 def main():
 	#get handle and establish connection to server
@@ -60,10 +60,16 @@ def main():
 
 	#exchange messages until client or server quits	
 	while(1):
-		msg = raw_input(handle + ' > ')
+		#send message
+		msg = raw_input(handle + " > ")
+		while len(msg) < 1:
+			print "Messages must be at least 1 character long.\n"
+			msg = raw_input(handle + " > ")
 		send_msg(msg, clientSocket, handle)
+		
+		#receive message
 		rec_msg(clientSocket)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 	main()
 
