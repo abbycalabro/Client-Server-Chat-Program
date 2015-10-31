@@ -1,6 +1,6 @@
 '''
 Program:		chatclient.py
-Course:			CS 372
+Assignment:     CS 372, Project 1
 Author:			Abby Meunier
 Email:			meuniera@oregonstate.edu
 Date:			11/1/2015
@@ -62,8 +62,8 @@ def main():
 	while(1):
 		#send message
 		msg = raw_input(handle + " > ")
-		while len(msg) < 1:
-			print "Messages must be at least 1 character long.\n"
+		while len(msg) < 1 or len(msg) > 500:
+			print "Messages must be between 1 and 500 characters. Try again.\n"
 			msg = raw_input(handle + " > ")
 		send_msg(msg, clientSocket, handle)
 		

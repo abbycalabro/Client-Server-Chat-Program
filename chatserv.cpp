@@ -1,6 +1,6 @@
 /****************************************************************************************
 Program:		chatserv.cpp
-Course:			CS 372
+Assignment:     CS 372, Project 1
 Author:			Abby Meunier
 Email:			meuniera@oregonstate.edu
 Date:			11/1/2015
@@ -56,7 +56,7 @@ int start_up(int server_port) {
 
 bool rec_msg(int new_sockfd) {
 	int bytes_read;
-	char buffer[500];
+	char buffer[504];
 
 	//receive message
 	bytes_read = recv(new_sockfd, buffer, sizeof(buffer), 0);
@@ -88,8 +88,8 @@ bool send_msg(int new_sockfd) {
 	//get message
 	cout << "A > ";
 	getline(cin, msg, '\n');
-	while(msg.length() < 1) {
-		cout << "Messages must be at least 1 character long." << endl;
+	while(msg.length() < 1 || msg.length() > 500) {
+		cout << "Messages must be between 1 and 500 characters. Try again." << endl;
 		cout << "A > ";
 		getline(cin, msg, '\n');
 	}
@@ -121,7 +121,7 @@ int new_connection(int sockfd) {
 	if(new_sockfd < 0)
 		cout << "Error accepting connection." << endl;
 	else
-		cout << "Connection to client established. Awaiting message..." << endl;
+		cout << "Connection to client established. Awaiting first message..." << endl;
 		
 	return new_sockfd;
 }
