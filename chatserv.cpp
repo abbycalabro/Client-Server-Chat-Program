@@ -78,7 +78,8 @@ bool rec_msg(int new_sockfd) {
         else
             cout << "Connection closed." << endl;
     }
-    return false;
+    
+	return false;
 }
 
 bool send_msg(int new_sockfd) {
@@ -147,5 +148,6 @@ int main(int argc, char* argv[]) {
                 break;            
         }
     }
-    return 0;
+    
+	return 0;
 }
