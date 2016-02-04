@@ -1,8 +1,7 @@
 /****************************************************************************************
 File:		README.txt
-Assignment:	CS 372, Project 1
 Author:		Abby Meunier
-Email:		meuniera@oregonstate.edu
+Email:		abby.meunier@gmail.com
 Date:		11/1/2015
 
 (Note: testing machine was a Mac)
@@ -31,9 +30,10 @@ To execute:	python chatclient.py <server-hostname> <port#>
 -Enter handle (username) when prompted by chatclient on host B. This initiates a connection with host A.
 -Type the initial message on host B and press enter to send it to host A.
 -The message will be displayed on host A, prepended by the user's handle.
--Host A and B can now take turns exchanging messages up to 500 characters. Messages sent by host A will be displayed on host B and vice versa.
+-Host A and B can now take turns exchanging messages up to 500 characters. Messages sent by host A 
+ will be displayed on host B and vice versa.
 
 (Note: host A's handle is not prompted, but hard-coded as "A")
 
--To close the connection, enter "/quit" on either host A or B. This results in chatclient terminating and chatserv
- listening for a new connection. To terminate chatserv, enter a SIGINT such as control+c.
+-To close the connection, enter "/quit" on either host A or B. This results in chatclient terminating 
+ and chatserv listening for a new connection. To terminate chatserv, enter a SIGINT such as control+c.

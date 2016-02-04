@@ -1,8 +1,7 @@
 /****************************************************************************************
 Program:		chatserv.cpp
-Assignment:     CS 372, Project 1
 Author:			Abby Meunier
-Email:			meuniera@oregonstate.edu
+Email:			abby.meunier@gmail.com
 Date:			11/1/2015
 Description:	Program takes port # as a command line argument, creates
 				welcoming socket and begins listening for connection requests 
@@ -24,6 +23,7 @@ Resources:
 #include <cstring>
 #include <netdb.h>
 #include <stdio.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -77,8 +77,8 @@ bool rec_msg(int new_sockfd) {
 			cout << "Error closing connection" << endl;
 		else
 			cout << "Connection closed." << endl;
-		return false;
 	}
+	return false;
 }
 
 bool send_msg(int new_sockfd) {
